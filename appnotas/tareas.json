@@ -1,0 +1,14 @@
+[
+    {
+        "titulo": "titulo de primer objeto del array",
+        "estado": "terminada"
+    },
+    {
+        "titulo": "titulo del segundo objeto del array",
+        "estado": "pendiente"
+    },
+    {
+        "titulo": "titulo del tercer objeto del array",
+        "estado": "en progreso"
+    }
+]
