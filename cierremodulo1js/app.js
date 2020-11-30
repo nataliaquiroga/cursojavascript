@@ -1,8 +1,12 @@
 let autos = require ('./autos');
-let personas = require ('./personas');
+//let personas = require ('./personas');
 let concesionaria = {
 autos: autos,
-personas:personas,
+personas:{
+    nombre: 'Juan',
+    capacidadDePagoEnCuotas: 200000000000,
+    capacidadDePagoTotal: 1000000000000
+    },
 
 buscarAuto:  function (patente){
      let autocoincide = autos.find(function(auto){
@@ -55,29 +59,31 @@ venderAuto: function(patente){
       } return 0   
     },
 
-    puedeComprar:function(persona, auto){
-        let cuotas = this.autos.precio/this.autos.cuotas
-        let capacidadcuotas = this.personas.capacidadDePagoEnCuotas
-        let pagototal= this.personas.capacidadDePagoTotal
-        let precio =this.autos.precio
-        if(pagototal >= precio){
-        }else if(capacidadcuotas >= cuotas){
-                return "true de dos if"
-        } return "false de if principal"
-        
+        puedeComprar : function (auto, persona){
+            const cuota = 15000/12;
+         return (this.personas.capacidadDePagoEnCuotas >= cuota && this.personas.capacidadDePagoTotal >= 15000) ? true : false;
+         },
 
-    }
+         autosQuePuedeComprar: function (persona){
+            let personaPuedeComprar = this.puedeComprar()
+            let lista
+            if (personaPuedeComprar == true){
+                 lista = autos.findIndex(personaPuedeComprar)
+            }
+            return lista
        
+
+        }
+
+
 } 
 
-
 /*
-{
-    nombre: “Juan”,
-    capacidadDePagoEnCuotas: 20000,
-    capacidadDePagoTotal: 100000
-    }*/
+Ahora, te comprometiste a realizarla. Así que manos a la obra. Hay que escribir la función autosQuePuedeComprar, que recibe una persona y devuelve la lista de autos que puede comprar.
 
+Para comenzar tenés que agregar el código que escribiste en el ejercicio anterior.
+Al llamar a la función autosQuePuedeComprar una persona con capacidadDePagoEnCuotas: 30000 y capacidadDePagoTotal: 100000000 debe devolver todos los autos
+Al llamar a la función autosQuePuedeComprar una persona con capacidadDePagoEnCuotas: 7200 y capacidadDePagoTotal: 100000000 debe devolver 1 auto*/
 //console.log(concesionaria.buscarAuto('JJK116'))
 //console.log(concesionaria.venderAuto('APL123'))
 //console.log(concesionaria.venderAuto('JJK116'))
@@ -85,5 +91,6 @@ venderAuto: function(patente){
 //console.log(concesionaria.autos0KM())
 //console.log(concesionaria.listaDeVentas())
 //console.log(concesionaria.totalDeVentas())
-console.log(concesionaria.puedeComprar(10,5))
+console.log(concesionaria.puedeComprar(this.autos,this.personas))
+console.log(concesionaria.autosQuePuedeComprar(this.personas))
 
