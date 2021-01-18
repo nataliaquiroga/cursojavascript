@@ -66,15 +66,9 @@ venderAuto: function(patente){
 
          autosQuePuedeComprar: function (persona){
             let personaPuedeComprar = this.puedeComprar()
-            let lista
-            if (personaPuedeComprar == true){
-                 lista = autos.findIndex(personaPuedeComprar)
-            }
-            return lista
-       
-
+            let filtro = personaPuedeComprar.filter(this.puedeComprar(auto,persona))
+            return filtro
         }
-
 
 } 
 

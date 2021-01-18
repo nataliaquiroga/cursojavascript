@@ -40,14 +40,12 @@ puedeComprar : function (auto, persona){
  }
 },
 
- autosQuePuedeComprar: function (persona){
+autosQuePuedeComprar: function (persona){
     let personaPuedeComprar = this.puedeComprar()
-    let lista
-    if (personaPuedeComprar == true){
-         lista = autos.findIndex(personaPuedeComprar)
-    }
-    return lista
- }
+    let filtro = personaPuedeComprar.filter(this.puedeComprar(auto,persona))
+    return filtro
+}
+
 
 }
 console.log(concesionaria.puedeComprar(this.autos,this.personas))
